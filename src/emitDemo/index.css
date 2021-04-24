@@ -1,0 +1,13 @@
+.emitcontainer{
+    width: 300px;
+    height: 200px;
+    padding: 10px;
+    border: 1px solid #000000;
+}
+
+.emitcontainer .emitbox{
+    width: 150px;
+    height: 80px;
+    margin-bottom: 15px;
+    border: 1px solid red;
+}

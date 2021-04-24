@@ -1,0 +1,10 @@
+* {
+  margin: 0;
+  padding: 0;
+  user-select: none;
+}
+li,
+ul,
+ol {
+  list-style: none;
+}
