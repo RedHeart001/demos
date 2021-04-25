@@ -118,4 +118,113 @@ class NameForm extends React.Component {
     }
 }
 
-ReactDOM.render(<NameForm />, document.getElementById('root'));
+class TextForm extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { value: '' };
+    }
+
+    handleChange = (event) => {
+        this.setState({ value: event.target.value });
+    }
+
+    handleSubmit = (event) => {
+        alert('提交的文本: ' + this.state.value);
+        event.preventDefault();
+    }
+
+    render() {
+        return (
+            <form onSubmit={this.handleSubmit}>
+                <label>
+                    文本:
+            <textarea value={this.state.value} onChange={this.handleChange} />
+                </label>
+                <input type="submit" value="提交" />
+            </form>
+        );
+    }
+}
+
+class SelectForm extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { value: 'grapefruit' };
+    }
+
+    handleChange = (event) => {
+        this.setState({ value: event.target.value });
+    }
+
+    handleSubmit = (event) => {
+        alert('您最喜欢的水果是: ' + this.state.value);
+        event.preventDefault();
+    }
+
+    render() {
+        return (
+            <form onSubmit={this.handleSubmit}>
+                <label>
+                    选择最喜欢的水果:
+                    <select value={this.state.value} onChange={this.handleChange}>
+                        <option value="grapefruit">葡萄柚</option>
+                        <option value="lime">酸橙</option>
+                        <option selected value="coconut">椰子</option>
+                        <option value="mango">芒果</option>
+                    </select>
+                </label>
+                <input type="submit" value="提交" />
+            </form>
+        );
+    }
+}
+
+
+class MultipleSelectForm extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { value: [] };
+    }
+
+    handleChange = (event) => {
+        let { value } = this.state;
+        value.push(event.target.value);
+        this.setState({ value });
+    }
+
+    handleSubmit = (event) => {
+        alert('您最喜欢的水果是: ' + this.state.value);
+        event.preventDefault();
+    }
+
+    render() {
+        return (
+            <form onSubmit={this.handleSubmit}>
+                <label>
+                    选择最喜欢的水果:
+                    <select multiple='multiple' value={this.state.value} onChange={this.handleChange}>
+                        <option value="grapefruit">葡萄柚</option>
+                        <option value="lime">酸橙</option>
+                        <option value="coconut">椰子</option>
+                        <option value="mango">芒果</option>
+                    </select>
+                </label>
+                <input type="submit" value="提交" />
+            </form>
+        );
+    }
+}
+
+
+function App() {
+    return (
+        <div>
+            <NameForm />
+            <TextForm />
+            <SelectForm />
+            <MultipleSelectForm />
+        </div>
+    )
+}
+
+ReactDOM.render(<App />, document.getElementById('root'));
