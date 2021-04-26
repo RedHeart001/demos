@@ -8,7 +8,7 @@
 import './index.css';
 // import "./olDemo/dynamicArcGis";
 // import './lifeCircle/react16';
-import './propsDemo';
+import './contextDemo';
 
 
 // import React from "react";
