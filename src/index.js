@@ -8,7 +8,11 @@
 // import './index.css';
 // import "./olDemo/dynamicArcGis";
 // import './lifeCircle/react16';
+<<<<<<< HEAD
 import './dummyList';
+=======
+import './contextDemo';
+>>>>>>> 2160156f2e8b93827839dd05ff3f7dc1237da652
 
 
 // import React from "react";
