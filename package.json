@@ -10,6 +10,8 @@
     "babel-eslint": "^10.1.0",
     "immutable": "^4.0.0-rc.12",
     "jquery": "^3.5.1",
+    "less": "^4.1.1",
+    "less-loader": "^10.0.1",
     "mobx": "^6.3.0",
     "mobx-react": "^7.1.0",
     "ol": "^6.4.3",
