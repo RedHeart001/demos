@@ -30,7 +30,7 @@ const DummyList = () => {
 
         // 初始化数据源数据
     const createListData = () => {
-        const initList = Array.from(Array(4000).keys());
+        const initList = Array.from(Array(40).keys());
         setSourceData(initList);
     };
 
@@ -43,10 +43,10 @@ const DummyList = () => {
     }, [sourceData]);
 
     const currentViewList = useMemo(() => {
+        console.log("showRasnge",showRange);
         return sourceData.slice(showRange.start, showRange.end).map((item: any) => {
             return {
-                data: item,
-                id: "item_" + item
+                data:item
             }
         })
     }, [sourceData, showRange]);
@@ -56,11 +56,16 @@ const DummyList = () => {
         if (element) {
             // 当前偏移量
             const offset = Math.floor(element.scrollTop / ITEM_HEIGHT) + 1;
+            // 页面起始
             const startSize = offset - PRE_LOAD_COUNT;
+            // 视图高度
             const viewHeight = element.clientHeight;
-            const viewItemNum =  Math.ceil(viewHeight / ITEM_HEIGHT);
+            // 试图可以容纳的项目
+            const viewItemNum = Math.ceil(viewHeight / ITEM_HEIGHT);
+            // 视图结束 = 起始+页面个数+预加载数
             const endSize = startSize + viewItemNum + PRE_LOAD_COUNT;
             // console.log(startSize, endSize);
+            // 改变显示的范围
             setShowRange({
                 start: startSize < 0? 0 :startSize,
                 end:endSize > sourceData.length ? sourceData.length:endSize
@@ -71,10 +76,21 @@ const DummyList = () => {
     /**
  * scrollView 偏移量
  */
- const scrollViewOffset = useMemo(() => {
-    console.log(showRange.start, "showRange.start");
-    return showRange.start * ITEM_HEIGHT;
-  }, [showRange.start]);
+    const scrollViewOffset = useMemo(() => {
+        return showRange.start * ITEM_HEIGHT;
+    }, [showRange.start]);
+    
+    const reachScrollBottom = () => {
+        const contentScrollTop = containerRef.current?.scrollTop || 0; 
+        //可视区域
+        const clientHeight = containerRef.current?.clientHeight || 0; 
+        //滚动条内容的总高度
+        const scrollHeight = containerRef.current?.scrollHeight || 0;
+        if (contentScrollTop + clientHeight >= scrollHeight) {
+            return true;
+        }
+        return false;
+    }
 
     /**
  * onScroll事件回调
@@ -82,6 +98,18 @@ const DummyList = () => {
  */
     const containerScroll = (e:any) => {
         e.preventDefault();
+        if (reachScrollBottom()) {
+            let endSize = showRange.end;
+            const pushData:number[] = [];
+            for (let index = 0; index < 20; index++) {
+                pushData.push(endSize++);
+            }
+
+            setSourceData((arr:any) => {
+                return[...arr,...pushData]
+            })
+        }
+
         calculateRange();
     }
 
@@ -94,8 +122,10 @@ const DummyList = () => {
         onScroll={containerScroll}
     >
         <div style={{
-            height: scrollViewHeight - scrollViewOffset,
-            transform:`translateY(${scrollViewOffset})`
+            height: (scrollViewHeight - scrollViewOffset),
+            transform:`
+                translateY(${scrollViewOffset}px)
+            `
         }}>
             {
                 currentViewList.map((item: any) => {
@@ -104,7 +134,7 @@ const DummyList = () => {
                             height: ITEM_HEIGHT
                         }}
                         className={"showElement"}
-                        key={ item.id}
+                        key={ item.data}
                     >
                         ITEM {item.data}
                     </div>
