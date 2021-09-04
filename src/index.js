@@ -5,10 +5,10 @@
  * @LastEditTime: 2021-02-26 09:42:23
  * @Description: file content
  */
-// import './index.css';
+import './index.css';
 // import "./olDemo/dynamicArcGis";
 // import './lifeCircle/react16';
-import './dummyList';
+import './cssDemos';
 
 
 // import React from "react";
