@@ -1,0 +1,76 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  height: 40em;
+  background-color: #2f3141;
+}
+
+.sun {
+  width: 10em;
+  height: 10em;
+  /* 渐变色在CSS中被定义成了<image>类型，所以渐变色只可以用在需要图形数据的地方 */
+  background: linear-gradient(#fcd670, #f2784b);
+  border-radius: 50%;
+  /* 水平阴影距离，垂直阴影距离，模糊距离，阴影大小，阴影颜色 */
+  box-shadow: 0 0 8px 8px rgba(242, 120, 75, 0.2);
+}
+
+.earth {
+  --len: 40;
+  --duration: 36.5;
+}
+
+.moon {
+  --len: 10;
+  --duration: 2.7;
+  top: 1.5em;
+  right: -0.3em;
+}
+
+.moon,
+.earth {
+  position: absolute;
+  width: calc(var(--len) * 1em);
+  height: calc(var(--len) * 1em);
+  border-radius: 50%;
+  border-width: 0.1em;
+  border-style: solid solid none none;
+  border-color: silver transparent transparent transparent;
+  animation: motion linear infinite;
+  animation-duration: calc(var(--duration) * 1s);
+}
+
+@keyframes motion {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+.earth::before {
+  --len: 3;
+  --color: linear-gradient(#19b5fe, #7befb2);
+  --top: 5.4;
+  --right: 3;
+}
+
+.moon::before {
+  --len: 1.2;
+  --color: linear-gradient(#8d6e63, #ffe0b2);
+  --top: 0.4;
+  --right: 1;
+}
+
+.earth::before,
+.moon::before {
+  content: "";
+  position: absolute;
+  width: calc(var(--len) * 1em);
+  height: calc(var(--len) * 1em);
+  border-radius: 50%;
+  background: var(--color);
+  top: calc(var(--top) * 1em);
+  right: calc(var(--right) * 1em);
+}

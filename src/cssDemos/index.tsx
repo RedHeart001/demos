@@ -1,15 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { SwordContainer } from './swords';
+import React from "react"
+import ReactDOM from "react-dom"
+import { SwordContainer } from "./swords"
+import { Revolution } from "./revolution"
 
 const App = () => {
-    return <div style={{
+  return (
+    <div
+      style={{
         width: "100%",
         height: "100%",
-        backgroundColor:"#000"
-    }}>
-        <SwordContainer/>
+      }}
+    >
+      {/* <SwordContainer /> */}
+      <Revolution />
     </div>
+  )
 }
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(<App />, document.getElementById("root"))
