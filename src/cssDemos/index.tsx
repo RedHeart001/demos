@@ -2,6 +2,12 @@ import React from "react"
 import ReactDOM from "react-dom"
 import { SwordContainer } from "./swords"
 import { Revolution } from "./revolution"
+import {
+  Width1Container,
+  Width2Container,
+  Width3Container,
+  Width4Container,
+} from "./width"
 
 const App = () => {
   return (
@@ -12,7 +18,11 @@ const App = () => {
       }}
     >
       {/* <SwordContainer /> */}
-      <Revolution />
+      {/* <Revolution /> */}
+      <Width1Container />
+      <Width2Container />
+      <Width3Container />
+      <Width4Container />
     </div>
   )
 }

@@ -1,0 +1,69 @@
+.width1 {
+  width: 240px;
+  background-color: red;
+}
+.width1 .nav-a {
+  display: block;
+  padding: 5px;
+  margin: 5px;
+  text-align: center;
+  font-size: 12px;
+  border: 1px solid yellow;
+}
+
+.width2 {
+  position: relative;
+  width: 1000px;
+  background-color: #000;
+  height: 200px;
+}
+
+.width2 > div {
+  position: absolute;
+  left: 50px;
+  right: 50px;
+  top: 20px;
+  bottom: 20px;
+  background-color: #fff;
+}
+
+.width3.father {
+  width: 102px;
+}
+
+.son {
+  border: 1px solid #000;
+  padding: 20px;
+}
+
+.width4.box1 {
+  /* height: 16em; */
+  padding: 3em;
+  background-color: #000;
+  position: relative;
+}
+
+.box {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transition: all 0.3s;
+}
+.two {
+  background-color: pink;
+}
+.three {
+  background-color: red;
+  transform: translateY(2em);
+}
+.four {
+  background-color: yellow;
+  transform: translateY(4em);
+}
+.five {
+  background-color: green;
+  transform: translateY(6em);
+}
+.two:hover {
+  transform: translateY(-2em);
+}
