@@ -43,10 +43,10 @@ export const Width4Container = () => {
 export const Width5Container = () => {
   return (
     <div className="img">
-      <a href="javascript(0);;" className="prev">
+      <a href="javascript(0)" className="prev">
         prev
       </a>
-      <a href="javascript(0);;" className="next">
+      <a href="javascript(0)" className="next">
         next
       </a>
     </div>

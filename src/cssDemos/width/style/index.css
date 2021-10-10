@@ -67,3 +67,30 @@
 .two:hover {
   transform: translateY(-2em);
 }
+
+.img {
+  display: inline-block;
+  position: relative;
+  width: 10em;
+  padding: 3em;
+  background-color: antiquewhite;
+}
+.img .prev {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background-color: red;
+  opacity: 0.7;
+}
+
+.img .next {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  background-color: blue;
+  opacity: 0.7;
+}
