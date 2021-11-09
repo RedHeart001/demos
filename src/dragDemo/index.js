@@ -5,19 +5,14 @@
  * @LastEditTime: 2020-07-20 23:14:02
  * @Description: file content
  */
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 
-class DragBox extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      result: 0,
-    };
-  }
+const DragBox = () => {
+  const [result, setResult] = useState(0);
 
-  componentDidMount() {
+  useEffect(() => {
     let dragBoxs = document.getElementsByClassName("dragBox"),
       dragTarget = document.getElementsByClassName("dragTarget")[0],
       moveBox = null;
@@ -52,46 +47,43 @@ class DragBox extends React.Component {
         num2 = parseInt(document.getElementsByName("numTwo")[0].value);
       switch (operator) {
         case "+":
-          this.setState({ result: num1 + num2 });
+          setResult({ result: num1 + num2 });
           break;
         case "-":
-          this.setState({ result: num1 - num2 });
+          setResult({ result: num1 - num2 });
           break;
         case "*":
-          this.setState({ result: num1 * num2 });
+          setResult({ result: num1 * num2 });
           break;
         case "/":
-          this.setState({ result: num1 / num2 });
-          break;
-        default:
+          setResult({ result: num1 / num2 });
           break;
       }
     });
-  }
-  render() {
-    let result = this.state.result;
-    return (
-      <div>
-        <div className="dragBox" draggable="true">
-          +
-        </div>
-        <div className="dragBox" draggable="true">
-          -
-        </div>
-        <div className="dragBox" draggable="true">
-          *
-        </div>
-        <div className="dragBox" draggable="true">
-          /
-        </div>
-        <br />
-        <input type="text" value="5" name="numOne" />
-        <div className="dragTarget"></div>
-        <input type="text" value="8" name="numTwo" />
-        <div className="equal"> = </div>
-        <span className="result">{result}</span>
+  }, [])
+
+  return (
+    <div>
+      <div className="dragBox" draggable="true">
+        +
       </div>
-    );
-  }
+      <div className="dragBox" draggable="true">
+        -
+      </div>
+      <div className="dragBox" draggable="true">
+        *
+      </div>
+      <div className="dragBox" draggable="true">
+        /
+      </div>
+      <br />
+      <input type="text" value="5" name="numOne" />
+      <div className="dragTarget"></div>
+      <input type="text" value="8" name="numTwo" />
+      <div className="equal"> = </div>
+      <span className="result">{result}</span>
+    </div>
+  );
 }
+
 ReactDOM.render(<DragBox />, document.getElementById("root"));
