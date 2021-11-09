@@ -15,15 +15,15 @@
   line-height: 2em;
   border: 0.1em solid red;
   overflow: hidden;
-  animation: enhance-bounce-in-down 1s calc(var(--delay) * 1s) forwards;
+  animation: enhance-bounce-in-down 1s calc(var(--delay) * 10s) forwards;
 }
 
 .list {
   width: 100%;
   height: 1100%;
   list-style-type: none;
-  animation: move .3s linear infinite,
-    bounce-in-down 1s calc(var(--delay) * 1s) forwards;
+  animation: move 10s linear infinite,
+    bounce-in-down 1s calc(var(--delay) * 10s) forwards;
 }
 
 .list li {
@@ -43,7 +43,7 @@
 }
 
 @keyframes bounce-in-down {
-  /* 起始从上面开始弹起 */
+  /* 从结束地方开始，做出一个即将结束的效果 */
   from {
     transform: translateY(calc(var(--i) * -9.09% - 7%));
     filter: none;
