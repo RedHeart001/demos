@@ -1,0 +1,23 @@
+.wrapper {
+  width: 640px;
+  overflow: hidden;
+}
+.test-margin {
+  height: 100px;
+  margin-right: -20px;
+}
+.test-margin::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.test-margin > div {
+  float: left;
+  height: 100px;
+  line-height: 100px;
+  width: 200px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  background-color: #dddddd;
+  text-align: center;
+}

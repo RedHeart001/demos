@@ -12,6 +12,8 @@ import {
 // import { Container, ImgContainer } from "./backfilter"
 import { SlotContainer } from "./slot"
 import { HoverContainer } from "./hover"
+import { LoadingContainer } from "./loading"
+import { MarginContainer } from "./margindemo"
 
 class App extends React.Component<any, any> {
   constructor(props: any) {
@@ -84,7 +86,9 @@ class App extends React.Component<any, any> {
         {/* <Container /> */}
         {/* <ImgContainer /> */}
         {/* <SlotContainer /> */}
-        <HoverContainer />
+        {/* <HoverContainer /> */}
+        {/* <LoadingContainer /> */}
+        <MarginContainer />
       </div>
     )
   }
